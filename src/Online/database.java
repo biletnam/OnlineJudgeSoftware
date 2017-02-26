@@ -30,7 +30,7 @@ public class database {
     
             Class.forName("com.mysql.jdbc.Driver");
             
-            Connection conn = DriverManager.getConnection("jdbc:mysql://192.168.0.4:3306/judge","root","root");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://192.168.43.38:3306/judge","root","root");
             Statement smt = conn.createStatement();
             if(flag==0){
             smt.executeUpdate(query);
@@ -61,8 +61,7 @@ public class database {
             }    
             }
             if(flag!=2)
-            conn.close();
-            
+            conn.close();            
         } catch (ClassNotFoundException ex) {
             System.out.println("Error 1");
         } catch (SQLException ex) {

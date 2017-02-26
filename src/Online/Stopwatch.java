@@ -26,17 +26,19 @@ public class Stopwatch{
         this.i2=i2;
         this.i3=i3;
     }
-    
+    static int t1=i1;
+    static int t2=i2;
     public static class sec extends Thread{
-        Login obj=new Login();
-        public void run()
+        public synchronized void run()
         {
             while(true)
             {
                 if(i1==0)
+                {
                     i1=60;
+                }
                 i1--;
-                obj.setsec(i1);
+                //obj.setsec(i1);
          // Login.sec.setText(i1+"");
                 //System.out.println(i1);
                 try {
@@ -49,17 +51,25 @@ public class Stopwatch{
         
         
     }
-    
+    final static int tt=t1;
     public static class min extends Thread{
+        int flag1=0; 
         
-        public void run()
+        public synchronized void run()
         {
             while(true)
             {
                 if(i2==0)
                     i2=60;
+                
                 //System.out.println(i2);
                 try {
+                    if(flag1==0)
+                    {
+                    Thread.sleep(tt*1000);
+                    flag1=1;
+                    }
+                    else
                     Thread.sleep(60000);
                 } catch (InterruptedException ex) {
                     Logger.getLogger(Stopwatch.class.getName()).log(Level.SEVERE, null, ex);
@@ -71,8 +81,8 @@ public class Stopwatch{
     }
     
     public static class hr extends Thread{
-        
-        public void run()
+        int flag2=0;
+        public synchronized void run()
         {
             while(true)
             {
@@ -80,6 +90,12 @@ public class Stopwatch{
                     i3=60;
                 //System.out.println(i3);
                 try {
+                    if(flag2==0)
+                    {
+                        Thread.sleep(t2*60000);
+                        flag2=1;
+                    }
+                    else
                     Thread.sleep(3600000);
                 } catch (InterruptedException ex) {
                     Logger.getLogger(Stopwatch.class.getName()).log(Level.SEVERE, null, ex);

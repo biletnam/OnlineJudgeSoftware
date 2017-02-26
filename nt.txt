@@ -1,0 +1,95 @@
+Problems in competitive programming which involve Mathematics are are usually about number theory, or geometry. If you know number theory, that increases your ammo heavily in solving a lot of tougher problems, and helps you in getting a strong hold on a lot of other problems, too.
+
+Problems in competitive programming require insight, so just knowing some topics is not enough at all. All of the problems requires more or less math tough. For instance, solving large systems of equations and approximating solutions to differential equations.
+
+Modulo:
+Modulo operation gives the remainder after division, when one number is divided by another. It is denoted by % sign.
+
+Example:
+We have two numbers 5 and 2, then 5%2 is 1 as when 5 is divided by 2, it leaves 1 as remainder.
+
+Properties:
+Some of the properties of modulo are:
+(a+b)%c = (a%c + b%c )%c. 
+(a * b)%c = ((a%c) * (b%c))%c.
+
+Example:
+Let’s say a = 5, b = 3, c = 2.
+Then:
+1) (5+3)%2 = 8%2 = 0. 
+Similarly (5%2 + 3%2)%2 = (1 + 1)%2 = 0.
+2) (5 * 3)%2 = 15%2 = 1.
+Similarly ( (5%2) * (3%2) )%2 = (1 * 1)%2 = 1.
+
+Greatest Common Divisor
+Greatest Common Divisor (GCD) of two or more numbers is the largest positive number that divides all the numbers which are being taken into consideration. 
+For example: GCD of 6, 10 is 2 since 2 is the largest positive number that divides both 6 and 10.
+
+Naive Approach:
+We can traverse over all the numbers from min(A, B) to 1 and check if the current number divides both A and B or not. If it does, then it will be the GCD of A and B.
+
+int GCD(int A, int B) {
+    int m = min(A, B), gcd;
+    for(int i = m; i > 0; --i)
+        if(A % i == 0 && B % i == 0) {
+            gcd = i;
+            return gcd;
+        }
+}
+Time Complexity: Time complexity of this function is O(min(A, B)).
+
+Euclid’s Algorithm:
+
+Idea behind Euclid’s Algorithm is GCD(A, B) = GCD(B, A % B). The algorithm will recurse until A % B = 0.
+
+int GCD(int A, int B) {
+    if(B==0)
+        return A;
+    else
+        return GCD(B, A % B);
+}
+Let us take an example. 
+Let A = 16, B = 10.
+GCD(16, 10) = GCD(10, 16 % 10) = GCD(10, 6)
+GCD(10, 6) = GCD(6, 10 % 6) = GCD(6, 4)
+GCD(6, 4) = GCD(4, 6 % 4) = GCD(4, 2)
+GCD(4, 2) = GCD(2, 4 % 2) = GCD(2, 0)
+
+Since B = 0 so GCD(2, 0) will return 2.
+
+Time Complexity: The time complexity of Euclid’s Algorithm is O(log(max(A, B))).
+
+Extended Euclid Algorithm:
+This is the extended form of Euclid’s Algorithm explained above. GCD(A,B) has a special property that it can always be represented in the form of an equation, i.e., Ax + By = GCD(A, B).
+
+This algorithm gives us the coefficients (x and y) of this equation which will be later useful in finding the Modular Multiplicative Inverse. These coefficients can be zero or negative in their value. This algorithm takes two inputs as A and B and returns GCD(A, B) and coefficients of the above equations as output.
+
+Implementation:
+
+#include < iostream >
+
+int d, x, y;
+void extendedEuclid(int A, int B) {
+    if(B == 0) {
+        d = A;
+        x = 1;
+        y = 0;
+    }
+    else {
+        extendedEuclid(B, A%B);
+        int temp = x;
+        x = y;
+        y = temp - (A/B)*y;
+    }
+}
+
+int main( ) {
+extendedEuclid(16, 10);
+cout << ”The GCD of 16 and 10 is ” << d << endl;
+cout << ”Coefficient x and y are: ”<< x <<  “and  “ << y << endl;
+return 0;   
+}
+Output:
+
+The GCD of 16 and 10 is 2
+Coefficient x and y are: 2 and -3

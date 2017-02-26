@@ -26,7 +26,7 @@ public class Request {
     static DataOutputStream dout;
     public int start(){
         try {     
-            s=new Socket("192.168.0.4",6666);
+            s=new Socket("192.168.43.38",6666);
             din=new DataInputStream(s.getInputStream());
             dout= new DataOutputStream(s.getOutputStream());
             return 1;
