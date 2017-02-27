@@ -8,5 +8,5 @@ can also give programming contests
 For hosts->
 Can make his own contest for others to participate.
 Software is still until work and i will be soon adding leaderboard as well.
-
+I am trying my best to make this software launch in my college for coding rounds at intra college level.
 Thank You!!
