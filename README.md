@@ -24,7 +24,7 @@ Run the Server.java file.
 Just click the Start Server Button.
 Server must be ON before running the Client programme.
 While hosting the contests You will need to click on accept request after client sends the request to host 
-the contest after clicking on managae contest button.
+the contest after clicking on manage contest button.
 -----------------------------------------------------------------------------------------------
 I am trying my best to make this software launch in my college for coding rounds at intra college level.
 Any Suggestions are welcome!!
