@@ -34,4 +34,5 @@ the contest after clicking on manage contest button.
 
 I am trying my best to make this software launch in my college for coding rounds at intra college level.
 Any Suggestions are welcome!!
+For Hugs and Bugs drop a mail at sushantoberoi3@gmail.com
 Thank You!!
